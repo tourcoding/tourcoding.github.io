@@ -1,0 +1,49 @@
+baseurl: /
+languageCode: zh-cn
+title: 走码观
+theme: hugo-ivy2
+googleAnalytics: ""
+disqusShortname: ""
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+preserveTaxonomyNames: true
+footnotereturnlinkcontents: ↩
+enableGitInfo: true
+publishDir: docs
+
+permalinks:
+  note: /note/:year/:month/:day/:slug/
+  post: /post/:year/:month/:day/:slug/
+
+menu:
+  main:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "关于"
+      url: "/about/"
+      weight: 2
+    - name: "分类"
+      url: "/categories/"
+      weight: 3
+    - name: "标签"
+      url: "/tags/"
+      weight: 4
+    - name: "创作"
+      url: "/articles/"
+      weight: 5
+    - name: "订阅"
+      url: "/index.xml"
+
+params:
+  description: "或许，我们的生活只是某个疯子的杜撰罢了"
+  footer: "&copy; [TourCoding](https://yihui.org) 2017-{Year} | [Github](https://github.com/yihui)"
+  highlightjsLang: ["latex"]
+  highlightjsTheme: "github"
+  highlightjsVersion: "11.7.0"
+
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true

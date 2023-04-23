@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CCCC - 走码观</title>
+    <meta property="og:title" content="CCCC - 走码观">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="1.以hello作为开始：
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; int main(void) { printf(&amp;quot;Hello, world!\n&amp;quot;); return 0; } 以helloworld为例对写程序的思路提出如下要求：
+[&amp;hellip;] 2.算法：解决问题的方法。（流程图，NS图，FSM有限状态 &amp;hellip;">
+      <meta property="og:description" content="1.以hello作为开始：
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; int main(void) { printf(&amp;quot;Hello, world!\n&amp;quot;); return 0; } 以helloworld为例对写程序的思路提出如下要求：
+[&amp;hellip;] 2.算法：解决问题的方法。（流程图，NS图，FSM有限状态 &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/lxgw-wenkai-screen-webfont/1.6.0/lxgwwenkaiscreen.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="/css/custom.css" />
+  </head>
+  <body class="articles">
+    <header class="masthead">
+      <h1><a href="/">走码观</a></h1>
+
+<p class="tagline">或许，我们的生活只是某个疯子的杜撰罢了</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">目录</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">首页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/categories/">分类</a></li>
+  
+  <li><a href="/tags/">标签</a></li>
+  
+  <li><a href="/articles/">创作</a></li>
+  
+  <li><a href="/index.xml">订阅</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>CCCC</h1>
+
+
+
+<h3>
+
+Yihui Xie
+
+
+
+
+
+
+ / 
+2023-02-14
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h1 id="一基本概念">一、基本概念</h1>
+<p>1.以hello作为开始：</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int main(void) {
+    printf(&quot;Hello, world!\n&quot;);
+    return 0;
+}
+</code></pre>
+<p>以helloworld为例对写程序的思路提出如下要求：</p>
+<ol>
+<li>头文件正确包含的正确性；</li>
+<li>以函数为单位来进程程序编写；</li>
+<li>声明部分+实现部分</li>
+<li>return 0一定要有，本意是结束当前函数，返回给父进程看的。</li>
+<li>多用空格和空行！</li>
+<li>添加注释</li>
+</ol>
+<p>2.算法：解决问题的方法。（流程图，NS图，FSM有限状态机）</p>
+<p>3.程序：用某些语言实现算法。</p>
+<p>4.进程：</p>
+<p>5.防止写越界、防止内存泄漏。谁打开谁关闭，谁申请谁释放。</p>
+<h1 id="二数据类型运算符和表达式">二、数据类型、运算符和表达式</h1>
+<h2 id="1数据类型基本数据类型">1、数据类型：（基本数据类型）</h2>
+<p><img src="image/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="img"></p>
+<p>在 C 语言标准(C89)没有定义布尔类型，所以 C 语言判断真假时以 0 为假，非 0 为真。</p>
+<p>C99 提供了 _Bool 型，所以布尔类型可以声明为 _Bool flag。</p>
+<p>_Bool 依然仍是整数类型，但与一般整型不同的是，_Bool 变量只能赋值为 0 或 1，非 0 的值都会被存储为 1。</p>
+<p>C99还提供了一个头文件 &lt;stdbool.h&gt; 定义了 bool 代表 _Bool，true 代表 1，false 代表 0。只要导入 stdbool.h ，就能非常方便的操作布尔类型了。</p>
+<p><strong>C语言基本数据类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>符号</th>
+<th style="text-align:left">关键字</th>
+<th>所占位数</th>
+<th style="text-align:left">存储大小</th>
+<th style="text-align:left">值范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整型</td>
+<td>有</td>
+<td style="text-align:left">(signed) int</td>
+<td>32</td>
+<td style="text-align:left">2 或 4 字节</td>
+<td style="text-align:left">-32,768 到 32,767 或 -2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+<td></td>
+<td>有</td>
+<td style="text-align:left">(signed) short</td>
+<td>16</td>
+<td style="text-align:left">2 字节</td>
+<td style="text-align:left">-32,768 到 32,767</td>
+</tr>
+<tr>
+<td></td>
+<td>有</td>
+<td style="text-align:left">(signed) long</td>
+<td>32</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">-2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+<td></td>
+<td>无</td>
+<td style="text-align:left">unsigned int</td>
+<td>32</td>
+<td style="text-align:left">2 或 4 字节</td>
+<td style="text-align:left">0 到 65,535 或 0 到 4,294,967,295</td>
+</tr>
+<tr>
+<td></td>
+<td>无</td>
+<td style="text-align:left">unsigned short</td>
+<td>16</td>
+<td style="text-align:left">2 字节</td>
+<td style="text-align:left">0 到 65,535</td>
+</tr>
+<tr>
+<td></td>
+<td>无</td>
+<td style="text-align:left">unsigned long</td>
+<td>32</td>
+<td style="text-align:left">4 字节</td>
+<td style="text-align:left">0 到 4,294,967,295</td>
+</tr>
+<tr>
+<td>实型</td>
+<td>有</td>
+<td style="text-align:left">float</td>
+<td>32</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">3.4e-38~3.4e38</td>
+</tr>
+<tr>
+<td></td>
+<td>有</td>
+<td style="text-align:left">double</td>
+<td>64</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">1.7e-308~1.7e308</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>有</td>
+<td style="text-align:left">char</td>
+<td>8</td>
+<td style="text-align:left">1 字节</td>
+<td style="text-align:left">-128 到 127 或 0 到 255</td>
+</tr>
+<tr>
+<td></td>
+<td>无</td>
+<td style="text-align:left">unsigned char</td>
+<td>8</td>
+<td style="text-align:left">1 字节</td>
+<td style="text-align:left">0 到 255</td>
+</tr>
+</tbody>
+</table>
+<p>思考：</p>
+<ol>
+<li>所占字节数</li>
+</ol>
+<p>数据类型所占字节数随机器硬件不同而不同，C标准没有规定每种类型所占位数和字节数</p>
+<ol start="2">
+<li>
+<p>存储区别</p>
+</li>
+<li>
+<p>不同类型的数据间进行转换</p>
+</li>
+<li>
+<p>特殊性：</p>
+</li>
+</ol>
+
+
+
+  <footer>
+  
+<nav class="post-nav">
+    <span class="nav-prev"></span>
+    <span class="nav-next"></span>
+</nav>
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.js" defer></script>
+<script src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.js" defer></script>
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://yihui.org">TourCoding</a> 2017-2023 | <a href="https://github.com/yihui">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+
